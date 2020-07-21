@@ -8,7 +8,7 @@ function randomValueFromArray(array){
 }
 
 
-let storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
+const storyText = 'It was 94 fahrenheit outside, so :insertx: went for a walk. When they got to :inserty:, they stared in horror for a few moments, then :insertz:. Bob saw the whole thing, but was not surprised — :insertx: weighs 300 pounds, and it was a hot day.';
 const insertX = [
   'Willy the Goblin',
   'Big Daddy',
@@ -26,13 +26,21 @@ const insertZ = [
 ];
 
 
+
 randomize.addEventListener('click', result);
 
 function result() {
 
+  let newStory = storyText;
+  let xItem = randomValueFromArray(insertX);
+  let yItem = randomValueFromArray(insertY);
+  let zItem = randomValueFromArray(insertZ);
+
+  newStory = newStory.replace(/:insertx:/g, xItem).replace(/:inserty:/g, yItem).replace(/:insertz:/g, zItem);
+
   if(customName.value !== '') {
     let name = customName.value;
-    newStory.replace('Bob', customName.value);
+    newStory.replace('Bob', name);
   }
 
   if(document.getElementById("uk").checked) {
@@ -44,11 +52,3 @@ function result() {
   story.textContent = newStory;
   story.style.visibility = 'visible';
 }
-
-let newStory = storyText;
-let xItem = randomValueFromArray(insertX);
-let yItem = randomValueFromArray(insertY);
-let zItem = randomValueFromArray(insertZ);
-
-newStory = newStory.replace(/:insertx:/g, xItem).replace(/:inserty:/g, yItem).replace(/:insertz:/g, zItem);
-
