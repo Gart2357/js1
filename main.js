@@ -40,13 +40,13 @@ function result() {
 
   if(customName.value !== '') {
     let name = customName.value;
-    newStory.replace('Bob', name);
+    newStory = newStory.replace('Bob', name);    
   }
 
   if(document.getElementById("uk").checked) {
     let weight = Math.round(300 / 14) + ' stone';
     let temperature =  Math.round((94 - 32) * 5 / 9) + ' centigrade';
-    newStory.replace('300 pounds', weight).replace('94 farenheit', temperature)
+    newStory = newStory.replace('300 pounds', weight).replace('94 farenheit', temperature);    
   }
 
   story.textContent = newStory;
